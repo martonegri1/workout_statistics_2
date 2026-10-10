@@ -18,6 +18,7 @@ female_calories = (
 '''
 
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 class Athlete:
@@ -52,6 +53,29 @@ def show_stats(df):
     plt.title("Kalóriaégetés")
 
     plt.show()
+
+def main():
+    name = input("Add meg a neved: ")
+    age = int(input("Add meg az életkorodat: "))
+    weight = int(input("Add meg a testsúlyodat (kg): "))
+    sex = input("Add meg a nemed (M/F): ")
+
+    new_athlete = Athlete(name, weight, sex, age)
+
+    workout_df = pd.read_excel("Workout_Data.xlsx")
+
+    workout_df["Kalória"] = workout_df.apply(lambda row: count_calories(
+        row["Szívverés(bpm)"],
+        new_athlete.weight,
+        new_athlete.age,
+        row["Edzéshossz(perc)"],
+        new_athlete.sex),
+        axis=1)
+
+    show_stats(workout_df)
+
+if __name__ == "__main__":
+    main()
 
 
 
