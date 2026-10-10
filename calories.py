@@ -16,6 +16,13 @@ female_calories = (
 / 4.184
 ) * duration
 '''
+class Athlete:
+    def __init__(self, name, weight, sex, age=18):
+        self.name = name
+        self.age = age
+        self.weight = weight
+        self.sex = sex
+
 
 def count_calories(avg_heartbeat, weight, age, duration, sex):
     if duration < 0:
@@ -33,3 +40,6 @@ def count_calories(avg_heartbeat, weight, age, duration, sex):
         raise ValueError("Az érték csak 'M' vagy 'F' lehet!")
 
 return calories
+
+
+
