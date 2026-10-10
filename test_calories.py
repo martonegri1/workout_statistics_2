@@ -30,5 +30,5 @@ class TestCountCalories(unittest.TestCase):
         result = count_calories(120, 70, 30, 0, "M")
         self.assertEqual(result, 0)
 
-if __name == "__main__":
+if __name__ == "__main__":
     unittest.main()
